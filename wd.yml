@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pod-labeler
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pod-labeler
+  template:
+    metadata:
+      labels:
+        app: pod-labeler
+    spec:
+      containers:
+        - name: webhook
+          image: dutt1/271wh:2
+          ports:
+            - containerPort: 443
+          volumeMounts:
+            - name: webhook-tls
+              mountPath: /etc/webhook-certs
+              readOnly: true
+      volumes:
+        - name: webhook-tls
+          secret:
+            secretName: webhook-server-tls
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: pod-labeler-service
+  namespace: default
+spec:
+  ports:
+    - port: 443
+      targetPort: 443
+  selector:
+    app: pod-labeler
+

@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-pod
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: test
+  template:
+    metadata:
+      labels:
+        app: test
+    spec:
+      containers:
+        - name: nginx
+          image: nginx
+          ports:
+            - containerPort: 80  # Ensure port 80 is exposed
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: test-service
+spec:
+  selector:
+    app: test
+  ports:
+    - protocol: TCP
+      port: 80        # Service port
+      targetPort: 80   # Container port
+
