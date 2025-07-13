@@ -1,0 +1,18 @@
+
+
+1 what are all stages configured in Jenkins
+2 How to configure email alerts in Jenkins
+3 How do you configure 2 job to be executed parallel
+4 I need to trigger a job remotely how to configure
+5 i need Jenkins to prompt use befor executing next stage
+6 How to configure Jenkins downstream Job
+
+
+
+
+1 What are Git Pull-request statagies
+2 What is difference between merge and rebase
+3 How to check who made the commit
+4 What is git stash apply,pop, where did you used it
+5 What is diff be normal merge, sqash merge
+6 how to configure webhook in github
